@@ -43,6 +43,13 @@
     
     // Set source item for configuration
     [config setSourceItem:sourceItem];
+    // ads
+    NSURL *adSourceTag = [NSURL URLWithString:@"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/32573358/2nd_test_ad_unit&ciu_szs=300x100&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=123123555"];
+    
+    BMPAdSource *adSource = [[BMPAdSource alloc]initWithTag:adSourceTag ofType:BMPAdSourceTypeIMA];
+    BMPAdItem *adItem = [[BMPAdItem alloc] initWithAdSources:@[adSource] atPosition:@"pre"];
+    BMPAdvertisingConfiguration *adConfig = [[BMPAdvertisingConfiguration alloc] initWithSchedule: @[adItem]];
+    [config setAdvertisingConfiguration:adConfig];
     
     // Create player based on player configuration
     BMPBitmovinPlayer *player = [[BMPBitmovinPlayer alloc] initWithConfiguration:config];
