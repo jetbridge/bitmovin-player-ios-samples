@@ -41,8 +41,18 @@
     // Set a poster image
     [sourceItem setPosterSource:posterUrl];
     
+    
+    // subtitles
+    NSString *subtitles = @"https://api.hotpot.tv/captions/9009/track.vtt?token=chili";
+    NSURL *subtitlesURL = [NSURL URLWithString:subtitles];
+    
+    BMPSubtitleTrack *subtitleTrack = [[BMPSubtitleTrack alloc]initWithUrl:subtitlesURL label:@"en" identifier:@"lol works" isDefaultTrack:YES language:@"en"];
+    [sourceItem addSubtitleTrack:subtitleTrack];
+    
     // Set source item for configuration
     [config setSourceItem:sourceItem];
+    
+    
     // ads
     NSURL *adSourceTag = [NSURL URLWithString:@"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/32573358/2nd_test_ad_unit&ciu_szs=300x100&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=123123555"];
     
